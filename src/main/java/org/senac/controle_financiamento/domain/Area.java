@@ -3,6 +3,7 @@ package org.senac.controle_financiamento.domain;
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity
@@ -16,11 +17,11 @@ public class Area {
     @Column(length = 100, unique = true)
     private String nome;
 
-    @NotEmpty
-    @DecimalMin(value = "0.1")
+    @NotNull
+    @DecimalMin(value = "0.0")
     private BigDecimal orcamentoMinimo;
 
-    @NotEmpty
+    @NotNull
     @DecimalMin(value = "0.0")
     private BigDecimal orcamentoMaximo;
 

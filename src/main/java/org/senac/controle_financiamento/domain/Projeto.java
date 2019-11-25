@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity
@@ -17,17 +18,17 @@ public class Projeto {
     @Column(length = 100)
     private String nome;
 
-    @NotEmpty
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "area_id")
     private Area area;
 
-    @NotEmpty
+    @NotNull
     @Min(1)
     private Integer prazo;
 
-    @NotEmpty
-    @DecimalMin(value = "0.1")
+    @NotNull
+    @DecimalMin(value = "0.0")
     private BigDecimal orcamento;
 
     public Projeto() { }
