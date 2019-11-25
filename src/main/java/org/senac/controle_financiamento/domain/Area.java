@@ -13,7 +13,7 @@ public class Area {
     private Integer id;
 
     @NotEmpty
-    @Column(length = 100)
+    @Column(length = 100, unique = true)
     private String nome;
 
     @NotEmpty
