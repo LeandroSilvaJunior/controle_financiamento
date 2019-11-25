@@ -18,5 +18,14 @@ public class AreaController {
 
     @Autowired
     private AreaRepository repository;
-    
+
+    @PostMapping
+    public ResponseEntity<?> insert(@RequestBody @Valid Area area) {
+        if (repository.findByNome(area.getNome()) == null) {
+            return ResponseEntity.ok(repository.save(area));
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(String.format(" A Área %s já foi cadastrada", area.getNome()));
+        }
+    }
 }
