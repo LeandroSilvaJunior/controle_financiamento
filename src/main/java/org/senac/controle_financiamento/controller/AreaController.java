@@ -21,7 +21,7 @@ public class AreaController {
 
     @PostMapping
     public ResponseEntity<?> insert(@RequestBody @Valid Area area) {
-        if (repository.findByNome(area.getNome()) == null) {
+        if (repository.findByNomeIgnoreCase(area.getNome()) == null) {
             return ResponseEntity.ok(repository.save(area));
         } else {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
